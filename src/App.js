@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPosts } from './actions/postActions';
+import Form from './components/posts/Form';
+import Post from './components/posts/Post';
 
-function App() {
+const App = () => {
+
+  const [selected, setSelected] = useState(null);
+
+  const posts = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPosts());
+  }, [selected, dispatch]);
+
+
+  function updateSelected (post) {
+    setSelected(post);
+  }
+  function clearSelected () {
+    setSelected(null);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App' >
+      <Form selected={selected} clearSelected={clearSelected} />
+      {!posts.length ? <h2>Nothing to display; no posts so far</h2> :
+        posts.map((post) => <Post key={post._id} post={post} updateSelected={updateSelected} />)}
     </div>
   );
 }
