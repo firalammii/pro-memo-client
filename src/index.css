@@ -25,8 +25,7 @@ body {
 }
 
 .form{
-    
-    max-width: 640px;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
