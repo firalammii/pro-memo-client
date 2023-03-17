@@ -4,46 +4,43 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Roboto Mono','Montserrat', 'Roboto', monospace, sans-serif;
     min-height: 100vh;
     text-align: center;
     display: grid;
 }
 .App{
-    margin: 1em auto;
+    margin: 10px;
+    min-width: 320px;
     display: grid;
-    place-items: center;
+    gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-rows:max-content;
 }
 
-form,
-.post-n-clear-btn-con,
-.posts,
-.post,
-.post-contents{
+.post-n-clear-btn-con{
     display: grid;
     place-items: center;
     gap: 5px;
 }
 
-.form,
-.posts,
-.post{
-    /* width: 50%; */
-    min-width: 320px;
-    max-width: 360px;
-    height: fit-content;
-    border-radius: 8px;
-    
-}
-.posts{
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-template-rows: repeat(3, 1fr);
-}
 .form{
-    background-color: rgb(89, 89, 159);
+    
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    background-color: rgb(25, 25, 49);
+    color:azure;
     padding: 40px 0;
-    margin-bottom: 10px;
 }
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
 .post-n-clear-btn-con{
     width: 80%;
     margin-top: .4em;
@@ -76,23 +73,46 @@ button:hover{
 }
 
 .post{
-    position: relative;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 8px;
     padding: 1em 0;
     color: rgb(255, 255, 255);
-    background-color: rgb(89, 89, 159);
+    /* background-color: rgb(4, 74, 45); */
+    background-color: rgb(142, 151, 147);
+    box-shadow: 2px 2px 4px black;
 }
+.image{
+    position: relative;
+}
+.absolute-left,
+.absolute-right{
+    position: absolute;
+    top:20px;
+    text-align: left;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px black;
+}
+.absolute-left{
+    left: 10px;
+}
+.absolute-right{
+    right: 10px;
+}
+
 .pic{
-    width: 80%;
-    display: block;
-    margin-top: 1em;
-    justify-self: center;
+    width: 250px;
+    height: 250px;
+    display: inline-block;
 }
 .pic, .post{
    border-radius: 8px;
 }
 .post-contents{
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
     width: 80%;
 }
 
@@ -105,13 +125,16 @@ button:hover{
 p {
     margin:0
 }
+
 .date-n-likes-con{
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: baseline;
     margin: .5em auto;
 }
 .likes {
+    width: 100px;
     margin-right: auto;
     cursor: pointer;
     border-radius: 3px;
@@ -121,11 +144,15 @@ p {
     background-color: #a3a19f;
 }
 .like-btn{
-    
     background-color: rgb(89, 89, 159);
     border:none;
     border-radius: 50%;
+    cursor: pointer;
 }
+.like-btn:hover{
+    background-color: rgb(89, 89, 159);
+}
+
 span{
     text-decoration: underline;
     font-style: italic;
@@ -138,7 +165,8 @@ span:hover{
 .update-n-delete-btns-con{
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-bottom: auto;
 }
 .update-n-delete-btns{
     font-family: inherit;
@@ -154,16 +182,16 @@ span#creator {
     font-weight: 600;
 }
 
-
-@media(min-width:360px){
-    .posts{
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+@media(max-width:675px){
+    .App{
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .form,.post{
+        width: 70vw;
     }
 
 }
-/* @media(min-width:1200px){
-    .App{
-        grid-template-columns: auto auto auto;
-    }
-} */
-

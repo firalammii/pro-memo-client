@@ -2,10 +2,11 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy":"http://localhost:5000/",
+  "proxy": "http://localhost:5000/",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.12",
     "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
