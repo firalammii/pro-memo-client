@@ -1,4 +1,4 @@
-import { ACTION_TYPES } from '../constants';
+import { ACTION_TYPES } from '../actions/post-actionTypes';
 const { CREATE_POST, FETCH_POSTS, UPDATE_POST, DELETE_POST } = ACTION_TYPES;
 
 export default function reducer (state = { posts: [], }, action) {

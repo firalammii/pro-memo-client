@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
 
-import { createPost, updatePost } from '../../actions/postActions';
+import { createPost, updatePost } from '../actions/postActions';
 
-const Form = ({ selected, clearSelected }) => {
+const Form = ({ selected, clearSelected, toggleCloseModal }) => {
 
     const [post, setPost] = useState({
         creator: '', title: '', body: '', tags: '', pic: ''
@@ -42,7 +42,7 @@ const Form = ({ selected, clearSelected }) => {
     }
 
     return (
-        <div className='form'>
+        <div className='modal-form'>
             <h3>Create Memory</h3>
             <form onSubmit={handleSubmit}>
                 <input className='inputs' type='text' name='creator' placeholder='Creator' value={post.creator} onChange={(e) => handleChange(e)} required />
@@ -57,6 +57,7 @@ const Form = ({ selected, clearSelected }) => {
                     <button className='post-n-clear-btn' type='button' onClick={clear}>CLEAR FIELDS</button>
                 </div>
             </form>
+            <div className='close-modal' onClick={toggleCloseModal}>x</div>
         </div>
     );
 };
@@ -65,15 +66,16 @@ export default Form;
 /*
 
 ---------------
-la'ali | 15
-fatum  | 15
-umeyma | 10
-mari   | 10
-rabi   | 15
-musxafa| 10
-shakir | 10
-bilisa |  5
-nadhi  |  5
+La'ali | 15 | 0979666541 done
+Fatuma | 15 | 0921864342 done
+Umeyma | 10 | done
+Mari   | 10 | done
+rabi   | 15 | done
+musxafa| 10 | done
+shakir | 10 | done
+bilisa |  5 | done
+nadhi  |  5 | done 5 left
 ----------------
-
+/* 0979666541 farhan
+/* 1000330450422 Aliyyi Nure /
 */

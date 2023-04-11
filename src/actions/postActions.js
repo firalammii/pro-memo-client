@@ -1,5 +1,5 @@
 
-import { ACTION_TYPES } from '../constants';
+import { ACTION_TYPES } from './post-actionTypes';
 import * as api from '../api/api';
 
 const { FETCH_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } = ACTION_TYPES;
