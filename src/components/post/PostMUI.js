@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { Button, Card, CardContent, CardMedia, CircularProgress, Container, Grid, Typography } from '@mui/material';
 import FavoriteBorderTwoToneIcon from '@mui/icons-material/FavoriteBorderTwoTone';
-import './styles.css';
+import './postMUI.css';
 import { updatePost } from '../../actions/postActions';
 
 
@@ -18,7 +18,7 @@ const PostMUI = () => {
                     !posts.length ? <CircularProgress />
                         : (
                             posts.map(post => (
-                                <Grid item key={post._id} lg={2} sm={4} xs={6} md={3} className='post-item'>
+                                <Grid item key={post._id} lg={2} sm={4} xs={9} md={3} className='post-item'>
                                     <Card className='card'>
 
                                         <CardMedia image={post.pic} className='image' />

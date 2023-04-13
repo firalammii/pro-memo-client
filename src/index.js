@@ -10,7 +10,7 @@ import '@fontsource/roboto/700.css';
 
 
 import App from './App';
-import ContextPovider from './context-provider/ContextPovider';
+import ContextPovider from './contextProvider/ContextPovider';
 import './index.css';
 import store from './store/store';
 

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
 
-import { createPost, updatePost } from '../actions/postActions';
+import { createPost, updatePost } from '../../actions/postActions';
 
-const Form = ({ selected, clearSelected, toggleCloseModal }) => {
+const Form = ({ selected, clearSelected }) => {
 
     const [post, setPost] = useState({
         creator: '', title: '', body: '', tags: '', pic: ''
@@ -42,9 +42,9 @@ const Form = ({ selected, clearSelected, toggleCloseModal }) => {
     }
 
     return (
-        <div className='modal-form'>
-            <h3>Create Memory</h3>
-            <form onSubmit={handleSubmit}>
+        <div className='post-form'>
+            <h3 className='form-title'>Create Memory</h3>
+            <form onSubmit={handleSubmit} className='form'>
                 <input className='inputs' type='text' name='creator' placeholder='Creator' value={post.creator} onChange={(e) => handleChange(e)} required />
                 <input className='inputs' type='text' name='title' placeholder='Title' value={post.title} onChange={(e) => handleChange(e)} required />
                 <textarea className='inputs' type='text' name='body' placeholder='Body' value={post.body} onChange={(e) => handleChange(e)} required rows={4} />
@@ -57,7 +57,6 @@ const Form = ({ selected, clearSelected, toggleCloseModal }) => {
                     <button className='post-n-clear-btn' type='button' onClick={clear}>CLEAR FIELDS</button>
                 </div>
             </form>
-            <div className='close-modal' onClick={toggleCloseModal}>x</div>
         </div>
     );
 };
@@ -74,8 +73,8 @@ rabi   | 15 | done
 musxafa| 10 | done
 shakir | 10 | done
 bilisa |  5 | done
-nadhi  |  5 | done 5 left
+nadhi  | 10 | done 
 ----------------
-/* 0979666541 farhan
-/* 1000330450422 Aliyyi Nure /
+0979666541 farhan
+1000330450422 Aliyyi Nure 
 */

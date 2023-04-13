@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
-
 export const Context = createContext();
+
 const ContextPovider = ({ children }) => {
 
     const [closeModal, setCloseModal] = useState(false);
