@@ -3,11 +3,21 @@
   display: none;
   width: 0;
 } */
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    /* border: 2px solid red; */
 
-.container-grid {
-    display: flex;
-    justify-content: center;
 }
+.container-grid {
+    /* border: 2px solid red; */
+    margin:0;
+    width: 100%;
+    height: calc(100% - 64px);
+    
+}
+
 .card {
     margin-right:12px;
     text-align: center;
@@ -28,4 +38,9 @@
 .btn {
     float: right;
 }
-
+@media (max-width:500px) {
+    .container-grid {
+        display: flex;
+        justify-content: center;
+    }
+}

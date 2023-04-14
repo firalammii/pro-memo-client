@@ -12,7 +12,9 @@ import { useNavigate } from 'react-router-dom';
 import { deletePost, likePost } from '../../actions/postActions';
 import { Context } from '../../contextProvider/ContextPovider';
 import { ACTION_TYPES } from '../../actions/post-actionTypes';
-const Post = ({ post, updateSelected }) => {
+
+
+const Post = ({ post }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -33,7 +35,7 @@ const Post = ({ post, updateSelected }) => {
                     <p className='date'>{moment(date).fromNow()} </p>
                 </div>
                 <div className="dropdown">
-                    <MenuIcon className='menu-icon' titleAccess='options' onClick={() => updateSelected(post)} />
+                    <MenuIcon className='menu-icon' titleAccess='options' />
                     <div className="dropdown-content">
                         <button
                             className='update-btn'
@@ -46,7 +48,7 @@ const Post = ({ post, updateSelected }) => {
                         <button
                             className='delete-btn'
                             title='delete this post'
-                            onClick={() => dispatch(deletePost(post._id))}
+                            onDoubleClick={() => dispatch(deletePost(post._id))}
                         >
                             <DeleteForeverRoundedIcon />
                         </button>
