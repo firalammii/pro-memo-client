@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
 
 import { createPost, updatePost } from '../../actions/postActions';
+import { Context } from '../../contextProvider/ContextPovider';
+import { useNavigate } from 'react-router-dom';
 
-const Form = ({ selected, clearSelected }) => {
+const Form = () => {
 
     const [post, setPost] = useState({
         creator: '', title: '', body: '', tags: '', pic: ''
     });
+    const [checked, setChecked] = useState(false);
+    const [error, setError] = useState('');
 
     const { creator, title, body, tags, pic } = post;
+    const { selected, editPost } = useContext(Context);
 
     useEffect(() => {
         if (selected) {
@@ -19,6 +24,7 @@ const Form = ({ selected, clearSelected }) => {
     }, [selected]);
 
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     function handleChange (e) {
         setPost({ ...post, [e.target.name]: e.target.value });
@@ -27,17 +33,20 @@ const Form = ({ selected, clearSelected }) => {
     async function handleSubmit (e) {
         e.preventDefault();
         if (selected) {
-            const { _id: id } = post;
-            const updatedPost = { ...post, tags: tags.toString().split(',').map(tag => tag.trim()) };
-            dispatch(updatePost(id, updatedPost));
+            if (checked) {
+                const { _id: id } = post;
+                const updatedPost = { ...post, tags: tags.toString().split(',').map(tag => tag.trim()) };
+                dispatch(updatePost(id, updatedPost));
+            } else setError('confirm the action')
         } else {
             const postData = { creator, title, body, pic, tags: tags.toString().split(',').map(tag => tag.trim()) };
             dispatch(createPost(postData));
         }
+        navigate('/view-1')
         clear();
     }
     function clear () {
-        clearSelected();
+        editPost('clear');
         setPost({ creator: '', title: '', body: '', tags: '', pic: '' });
     }
 
@@ -52,6 +61,11 @@ const Form = ({ selected, clearSelected }) => {
                 <div className='inputs'>
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setPost({ ...post, pic: base64 })} />
                 </div>
+                {selected && <div className='updation-confirmation'>
+                    <input id='updation-confirmation' type='checkbox' checked={checked} onChange={() => setChecked(prev => !prev)} />
+                    <label htmlFor='updation-confirmation'>Sure to update this post?</label>
+                </div>}
+                {error && <p className='error'>{error}</p>}
                 <div className='post-n-clear-btn-con'>
                     <button className='post-n-clear-btn'>{selected ? 'UPDATE' : 'POST'}</button>
                     <button className='post-n-clear-btn' type='button' onClick={clear}>CLEAR FIELDS</button>

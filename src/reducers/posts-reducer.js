@@ -1,7 +1,7 @@
 import { ACTION_TYPES } from '../actions/post-actionTypes';
-const { CREATE_POST, FETCH_POSTS, UPDATE_POST, DELETE_POST } = ACTION_TYPES;
+const { CREATE_POST, FETCH_POSTS, UPDATE_POST, DELETE_POST, SELECT_POST } = ACTION_TYPES;
 
-export default function reducer (state = { posts: [], }, action) {
+export default function reducer (state = { posts: [], selecteds: [] }, action) {
 
     switch (action.type) {
 
@@ -27,6 +27,9 @@ export default function reducer (state = { posts: [], }, action) {
                 ...state,
                 posts: state.posts.filter(e => e._id !== action.payload._id)
             };
+        }
+        case SELECT_POST: {
+            return { ...state, selecteds: [action.payload, ...state.selecteds] };
         }
 
         default: return state;

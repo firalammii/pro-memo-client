@@ -1,16 +1,18 @@
 import React, { createContext, useState } from 'react';
+
 export const Context = createContext();
 
 const ContextPovider = ({ children }) => {
 
-    const [closeModal, setCloseModal] = useState(false);
-    function toggleCloseModal () {
-        setCloseModal(prev => !prev);
+    const [selected, setSelected] = useState(null);
+    function editPost (post) {
+        if (post === 'clear') setSelected(null);
+        else setSelected(post);
     }
 
     return (
         <Context.Provider value={{
-            closeModal, toggleCloseModal
+            selected, editPost
         }}>
             {children}
         </Context.Provider>

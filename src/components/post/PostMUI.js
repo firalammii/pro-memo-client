@@ -10,7 +10,7 @@ import { updatePost } from '../../actions/postActions';
 const PostMUI = () => {
     const posts = useSelector((state) => state.postsReducer.posts);
     const dispatch = useDispatch();
-    console.log(posts);
+
     return (
         <Container className='container' maxWidth='xl'>
             <Grid container spacing={1} className='container-grid' >

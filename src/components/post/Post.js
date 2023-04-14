@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import moment from 'moment';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteBorderTwoToneIcon from '@mui/icons-material/FavoriteBorderTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
-// import menu2l from '../../icons/menu2l.png';
 
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { deletePost, likePost } from '../../actions/postActions';
-
+import { Context } from '../../contextProvider/ContextPovider';
+import { ACTION_TYPES } from '../../actions/post-actionTypes';
 const Post = ({ post, updateSelected }) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { editPost } = useContext(Context);
     const { title, creator, body, pic, date, tags, likes } = post;
+
+    function editNnevigate () {
+        dispatch({ type: ACTION_TYPES.SELECT_POST, payload: post });
+        editPost(post);
+        navigate('/post');
+    }
 
     return (
         <div className='post'>
@@ -23,20 +32,20 @@ const Post = ({ post, updateSelected }) => {
                     <p className='creator'>By {creator}</p>
                     <p className='date'>{moment(date).fromNow()} </p>
                 </div>
-                <div class="dropdown">
+                <div className="dropdown">
                     <MenuIcon className='menu-icon' titleAccess='options' onClick={() => updateSelected(post)} />
-                    <div class="dropdown-content">
+                    <div className="dropdown-content">
                         <button
                             className='update-btn'
-                            titleAccess='edit this post'
-                            onClick={() => updateSelected(post)}
+                            title='edit this post'
+                            onClick={editNnevigate}
                         >
                             <DriveFileRenameOutlineTwoToneIcon />
                         </button>
 
                         <button
                             className='delete-btn'
-                            titleAccess='delete this post'
+                            title='delete this post'
                             onClick={() => dispatch(deletePost(post._id))}
                         >
                             <DeleteForeverRoundedIcon />
@@ -54,14 +63,9 @@ const Post = ({ post, updateSelected }) => {
 
                 <p className='tags'>{tags.map((tag, i) => <span key={i}>{`#${tag} `}</span>)} </p>
                 <div className='likes-n-like-btn' onClick={() => dispatch(likePost(post))}>
-                    <p className='likes'>{(likes / 1000).toFixed(3)}k likes</p>
+                    <p className='likes'>{(likes / 1000).toFixed(3)}K LIKES</p>
                     <button className='like-btn' ><FavoriteBorderTwoToneIcon /> LIKE</button>
                 </div>
-
-                {/* <div className='update-n-delete-btns-con'>
-                    <button className='update-n-delete-btns ' onClick={() => updateSelected(post)}>UPDATE</button>
-                    <button className='update-n-delete-btns ' onClick={() => dispatch(deletePost(post._id))}><DeleteForeverRoundedIcon /></button>
-                </div> */}
             </div>
         </div>
     );

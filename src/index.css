@@ -53,14 +53,6 @@ body {
 
 }
 
-.post-n-clear-btn{
-    width: 100%;
-    background-color: rgb(173, 146, 146);
-}
-.post-n-clear-btn:hover {
-    background-color: rgb(62, 26, 26);
-    color:#fff;
-}
 .post-n-clear-btn,
 .inputs{
     font-family: inherit;
@@ -77,6 +69,23 @@ body {
 }
 textarea{
     resize: none;
+}
+.updation-confirmation {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: 80%;
+}
+.post-n-clear-btn{
+    width: 100%;
+    background-color: rgb(173, 146, 146);
+}
+.post-n-clear-btn:hover {
+    background-color: rgb(62, 26, 26);
+    color:#fff;
+}
+.error {
+    color: red;
 }
 
 .post-wrapper{
@@ -262,6 +271,6 @@ span#creator {
     
     .post {
         width: 100%;
-        height: calc(100vh - 20px);   
+        height: calc(100vh - 20px);
     }
 }
