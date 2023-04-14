@@ -37,12 +37,16 @@ const Form = () => {
                 const { _id: id } = post;
                 const updatedPost = { ...post, tags: tags.toString().split(',').map(tag => tag.trim()) };
                 dispatch(updatePost(id, updatedPost));
+                finished()
             } else setError('confirm the action')
         } else {
             const postData = { creator, title, body, pic, tags: tags.toString().split(',').map(tag => tag.trim()) };
             dispatch(createPost(postData));
+            finished()
         }
-        navigate('/view-1')
+    }
+    function finished () {
+        navigate('/view-1');
         clear();
     }
     function clear () {
