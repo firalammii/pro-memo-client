@@ -16,6 +16,8 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchPosts());
     dispatch(fetchUsers())
+
+    return () => localStorage.removeItem('memoUser');
   }, [dispatch]);
 
   const memoUser = useSelector(state => state.usersReducer.memoUser);

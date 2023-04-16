@@ -3,7 +3,7 @@ const { CREATE_USER, FETCH_USERS, UPDATE_USER, DELETE_USER, SELECT_USER, LOGOUT 
 
 const initial = {
     users: [],
-    memoUser: JSON.parse(localStorage.getItem('memoUser')) || null
+    memoUser: null
 };
 export default function reducer (state = initial, action) {
 
@@ -33,11 +33,10 @@ export default function reducer (state = initial, action) {
             };
         }
         case SELECT_USER: {
-            localStorage.setItem('memoUser', JSON.stringify(action.payload));
+
             return { ...state, memoUser: action.payload };
         }
         case LOGOUT: {
-            localStorage.removeItem('memoUser');
             return { ...state, memoUser: null };
         }
 

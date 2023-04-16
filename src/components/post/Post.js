@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import moment from 'moment';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -11,20 +11,37 @@ import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 import { deletePost, likePost } from '../../actions/postActions';
 import { Context } from '../../context/ContextPovider';
 import { postsActionTypes } from '../../actions/actionTypes';
+import { useEffect } from 'react';
 
 const Post = ({ post }) => {
 
+    const [error, setError] = useState(false)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const { editPost } = useContext(Context);
     const { title, creator, body, postPic, date, tags, likes, } = post;
 
-    function editNnevigate () {
-        dispatch({ type: postsActionTypes.SELECT_POST, payload: post });
-        editPost(post);
-        navigate('/post-form');
+    const memoUser = useSelector(state => state.usersReducer.memoUser);
+    function editNnevigate (post) {
+        if (memoUser._id === post.creator._id) {
+            setError(false);
+            dispatch({ type: postsActionTypes.SELECT_POST, payload: post });
+            editPost(post);
+            navigate('/post-form');
+        } else setError(true)
     }
+    function deletePostAccess (post) {
+        if (memoUser._id === post.creator._id) {
+            setError(false);
+            dispatch(deletePost(post._id));
+        } else setError(true);
+    }
+    useEffect(() => {
+        if (error) {
+            setTimeout(() => setError(false), 1000);
+        }
+    }, [error])
 
     return (
         <div className='post'>
@@ -33,13 +50,14 @@ const Post = ({ post }) => {
                     <p className='creator'>By <img src={creator?.pp} alt='' style={{ width: '20px', borderRadius: '50%' }} />{creator?.username}</p>
                     <p className='date'>{moment(date).fromNow()} </p>
                 </div>
+                {error && <p className='error'>not your post</p>}
                 <div className="dropdown">
                     <MenuIcon className='menu-icon' titleAccess='options' />
                     <div className="dropdown-content">
                         <button
                             className='update-btn'
                             title='edit this post'
-                            onClick={editNnevigate}
+                            onClick={() => editNnevigate(post)}
                         >
                             <DriveFileRenameOutlineTwoToneIcon />
                         </button>
@@ -47,7 +65,7 @@ const Post = ({ post }) => {
                         <button
                             className='delete-btn'
                             title='delete this post'
-                            onDoubleClick={() => dispatch(deletePost(post._id))}
+                            onDoubleClick={() => deletePostAccess(post)}
                         >
                             <DeleteForeverRoundedIcon />
                         </button>
