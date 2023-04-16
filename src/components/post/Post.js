@@ -1,22 +1,18 @@
 import React, { useContext } from 'react';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteBorderTwoToneIcon from '@mui/icons-material/FavoriteBorderTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
 import { deletePost, likePost } from '../../actions/postActions';
 import { Context } from '../../context/ContextPovider';
 import { postsActionTypes } from '../../actions/actionTypes';
 
-
 const Post = ({ post }) => {
-
-    console.log('post:', post)
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -34,7 +30,7 @@ const Post = ({ post }) => {
         <div className='post'>
             <div className='menu-n-creator'>
                 <div className='creator-n-date'>
-                    <p className='creator'>By {creator?.username}</p>
+                    <p className='creator'>By <img src={creator?.pp} alt='' style={{ width: '20px', borderRadius: '50%' }} />{creator?.username}</p>
                     <p className='date'>{moment(date).fromNow()} </p>
                 </div>
                 <div className="dropdown">

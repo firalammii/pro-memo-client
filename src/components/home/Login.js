@@ -25,7 +25,7 @@ const Login = () => {
 
         if (user) {
             dispatch({ type: usersActionTypes.SELECT_USER, payload: user });
-            navigate('/post-form');
+            navigate('/personal-posts');
             setError(false);
         } else setError(true);
     };

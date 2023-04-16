@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import FileBase from 'react-file-base64';
 
 import { createPost, updatePost } from '../../actions/postActions';
 import { Context } from '../../context/ContextPovider';
-import { useNavigate } from 'react-router-dom';
 
 const PostForm = () => {
 
@@ -50,7 +50,7 @@ const PostForm = () => {
         }
     }
     function finished () {
-        navigate('/view-1');
+        navigate('/personal-posts');
         clear();
     }
     function clear () {

@@ -4,16 +4,11 @@
     height: calc(100vh - 44px);
     display: flex;
     justify-content: center;
-    /* padding: 10px; */
-
-    /* border: 2px solid red; */
 }
 .register, .login {
     width: 100%;
     height: 100%;
     max-width: 500px;
-    /* min-width: 320px; */
-    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,8 +16,6 @@
     padding: 0 40px;
     background-color: rgb(116, 172, 172);
     border-radius: 8px;
-    
-    /* border: 2px solid red; */
 }
 
 .reg-form-wrapper, .login-form-wrapper{
@@ -36,9 +29,6 @@
     gap:10px;
 
     box-shadow: 2px 2px 4px black;
-
-    /* border: 2px solid red; */
-
 }
 .reg-logo, .login-logo {
     font-size: large;
@@ -53,22 +43,18 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    
-    /* border: 2px solid red; */
-
 }
 
 .reg-inputs, .login-inputs {
     font-size: 16px;
     padding: 8px 10px;
-    /* outline: none; */
     border: none;
     border-bottom: 1px solid rgb(51, 51, 168);
 }
 
-/* .inputs::placeholder {
+.inputs::placeholder {
     color: #b8aaaa;
-} */
+}
 
 .reg-button, .login-button {
     background-color: rgb(67, 104, 188);
