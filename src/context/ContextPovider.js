@@ -5,6 +5,7 @@ export const Context = createContext();
 const ContextPovider = ({ children }) => {
 
     const [selected, setSelected] = useState(null);
+
     function editPost (post) {
         if (post === 'clear') setSelected(null);
         else setSelected(post);

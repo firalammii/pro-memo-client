@@ -1,10 +1,24 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import MenuIcon from '@mui/icons-material/Menu';
 
+
 import './navbar.css';
+import { usersActionTypes } from '../../actions/actionTypes';
 
 const Navbar = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const display = { display: 'block' };
+    const memoUser = useSelector(state => state.usersReducer.memoUser);
+
+    function handleLogout () {
+        dispatch({ type: usersActionTypes.LOGOUT });
+        navigate('/login');
+    }
     return (
         <nav className='navbar'>
             <div className=''>
@@ -12,11 +26,13 @@ const Navbar = () => {
             </div>
 
             <div className='links'>
-                <Link className='link' to='/home' > Home </Link>
-                <Link className='link' to='/post' > Post </Link>
+
+                {/* <Link className='link' to='/home' > Home </Link> */}
+                <Link className={`link ${memoUser && 'hide'}`} to='/register' > Signup </Link>
+                <Link className='link' to='/post-form' > Post </Link>
                 <Link className='link' to='/view-1' > View-1 </Link>
                 <Link className='link' to='/view-2' > View-2 </Link>
-                <button className='link logout-btn' >Logout</button>
+                <button className={`link logout-btn ${memoUser && 'display'}`} onClick={handleLogout} >Logout</button>
                 <div className='navbar-menu-icon' ><MenuIcon /></div>
             </div>
 

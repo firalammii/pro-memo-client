@@ -4,34 +4,40 @@ import moment from 'moment';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteBorderTwoToneIcon from '@mui/icons-material/FavoriteBorderTwoTone';
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
-
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
-import { useDispatch } from 'react-redux';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { deletePost, likePost } from '../../actions/postActions';
-import { Context } from '../../contextProvider/ContextPovider';
-import { ACTION_TYPES } from '../../actions/post-actionTypes';
+import { Context } from '../../context/ContextPovider';
+import { postsActionTypes } from '../../actions/actionTypes';
 
 
 const Post = ({ post }) => {
 
+    console.log('post:', post)
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const { editPost } = useContext(Context);
-    const { title, creator, body, pic, date, tags, likes } = post;
+    const { title, users, body, postPic, date, tags, likes, privecy } = post;
 
     function editNnevigate () {
-        dispatch({ type: ACTION_TYPES.SELECT_POST, payload: post });
+        dispatch({ type: postsActionTypes.SELECT_POST, payload: post });
         editPost(post);
-        navigate('/post');
+        navigate('/post-form');
     }
+
+    // const memoUser = useSelector(state => state.usersReducer.memoUser);
+    // console.log('memoUser', memoUser)
 
     return (
         <div className='post'>
             <div className='menu-n-creator'>
                 <div className='creator-n-date'>
-                    <p className='creator'>By {creator}</p>
+                    <p className='creator'>By {users.username}</p>
                     <p className='date'>{moment(date).fromNow()} </p>
                 </div>
                 <div className="dropdown">
@@ -57,16 +63,16 @@ const Post = ({ post }) => {
             </div>
 
             <div className='image-con'>
-                <img className='pic' src={pic} alt='pic from db' />
+                <img className='pic' src={postPic} alt='pic from db' />
             </div>
             <div className='post-contents'>
                 <h3 className='title'>{title}</h3> <br />
                 <p className='body'>{body}</p>
 
                 <p className='tags'>{tags.map((tag, i) => <span key={i}>{`#${tag} `}</span>)} </p>
-                <div className='likes-n-like-btn' onClick={() => dispatch(likePost(post))}>
+                <div className='likes-n-like-btn' >
                     <p className='likes'>{(likes / 1000).toFixed(3)}K LIKES</p>
-                    <button className='like-btn' ><FavoriteBorderTwoToneIcon /> LIKE</button>
+                    <button className='like-btn' onClick={() => dispatch(likePost(post))}><FavoriteBorderTwoToneIcon /> LIKE</button>
                 </div>
             </div>
         </div>

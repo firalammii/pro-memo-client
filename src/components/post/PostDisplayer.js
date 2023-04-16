@@ -4,16 +4,17 @@ import { useSelector } from 'react-redux';
 import Post from './Post';
 import { CircularProgress } from '@mui/material';
 
-const PostWrapper = () => {
+const PostDisplayer = () => {
 
     const posts = useSelector((state) => state.postsReducer.posts);
+    console.log('posts:', posts);
 
     return (
-        <div className='post-wrapper'>
+        <div className='post-displayer'>
             {
                 !posts.length ?
                     <>
-                        <h2>Nothing to display; looking for posts</h2>
+                        looking for posts
                         <CircularProgress />
                     </> :
                     posts.map((post) => <Post key={post._id} post={post} />)
@@ -23,4 +24,4 @@ const PostWrapper = () => {
     );
 };
 
-export default PostWrapper;
+export default PostDisplayer;

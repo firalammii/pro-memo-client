@@ -47,6 +47,7 @@
 }
 
 .logout-btn {
+    display: none;
     background-color: transparent;
     color: white;
     border:none;
@@ -56,6 +57,10 @@
 .navbar-menu-icon:hover {
     display: flex;
     flex-direction: column;
-
 }
-
+.display {
+    display: block;
+}
+.hide {
+    display: none;
+}

@@ -23,38 +23,57 @@ body {
 
     /* border: 2px solid red; */
 }
+.post-form-component {
+    width: 100%;
+    height: calc(100vh - 44px);
+    display: flex;
+    justify-content: center;
+    /* padding: 10px 0; */
+
+    /* border: 2px solid red; */
+}
+
+.post-form-wrapper {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    background-color: rgb(107, 75, 75);
+
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap:10px;
+
+    box-shadow: 2px 2px 4px black;
+
+}
+.post-title {
+    margin-bottom: 1em;
+}
+.post-form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border-radius: 8px;
+
+    /* border: 2px solid red; */
+}
 
 .post-n-clear-btn-con{
     display: flex;
     flex-direction: column;
     gap: 5px;
-    width: 80%;
+    width: 100%;
     margin-top: .4em;
 }
-
-.post-form{
-    text-align: center;
-    width: 360px;
-    margin: 10px auto;
-    padding-top: 3em;
-    height: calc(100vh - 64px);
-    border-radius: 8px;
-    background-color: rgb(64, 61, 78);
-    color:white;
-}
-.form-title {
-    margin-bottom: 1em;
-}
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-
-}
-
 .post-n-clear-btn,
-.inputs{
+.post-inputs{
     font-family: inherit;
     font-weight: 550;
     color: #303431;
@@ -63,14 +82,15 @@ body {
     border: none;
     border-radius: 4px;
 }
-.inputs{
-    width: 80%;
+.post-inputs{
+    width: 100%;
     background-color: white;
 }
 textarea{
     resize: none;
 }
 .updation-confirmation {
+    color: white;
     display: flex;
     gap: 5px;
     align-items: center;
@@ -88,7 +108,7 @@ textarea{
     color: red;
 }
 
-.post-wrapper{
+.post-displayer{
     width:100%;
     height: calc(100vh - 64px);
     padding: 10px;
@@ -257,8 +277,8 @@ span#creator {
     background-color: rgb(9, 124, 248);
 }
 
-@media (max-width:550px) {
-    .post-wrapper {
+@media (max-width:499px) {
+    .post-displayer {
         display: grid;
         place-items: center;
         background-color: rgb(41, 41, 58);

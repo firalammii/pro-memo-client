@@ -1,0 +1,18 @@
+
+export const postsActionTypes = {
+    CREATE_POST: 'CREATE_POST',
+    FETCH_POSTS: 'FETCH_POSTS',
+    UPDATE_POST: 'UPDATE_POST',
+    DELETE_POST: 'DELETE_POST',
+    SELECT_POST: 'SELECT_POST',
+};
+
+export const usersActionTypes = {
+    CREATE_USER: 'CREATE_USER',
+    FETCH_USERS: 'FETCH_USERS',
+    UPDATE_USER: 'UPDATE_USER',
+    DELETE_USER: 'DELETE_USER',
+    SELECT_USER: 'SELECT_USER',
+    LOGOUT: 'LOGOUT',
+    ADD_USER_POST: 'ADD_USER_POST',
+};

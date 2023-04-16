@@ -1,12 +1,12 @@
-import { ACTION_TYPES } from '../actions/post-actionTypes';
-const { CREATE_POST, FETCH_POSTS, UPDATE_POST, DELETE_POST, SELECT_POST } = ACTION_TYPES;
+import { postsActionTypes } from '../actions/actionTypes';
+const { CREATE_POST, FETCH_POSTS, UPDATE_POST, DELETE_POST, SELECT_POST } = postsActionTypes;
 
 export default function reducer (state = { posts: [], selecteds: [] }, action) {
 
     switch (action.type) {
 
         case FETCH_POSTS: {
-            return { ...state, posts: action.payload };
+            return { ...state, posts: action.payload.reverse() };
         }
         case CREATE_POST: {
             return { ...state, posts: [action.payload, ...state.posts] };
@@ -29,7 +29,7 @@ export default function reducer (state = { posts: [], selecteds: [] }, action) {
             };
         }
         case SELECT_POST: {
-            return { ...state, selecteds: [action.payload, ...state.selecteds] };
+            return { ...state, selecteds: [...state.selecteds, action.payload] };
         }
 
         default: return state;
