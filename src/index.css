@@ -20,17 +20,12 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-
-    /* border: 2px solid red; */
 }
 .post-form-component {
     width: 100%;
     height: calc(100vh - 44px);
     display: flex;
     justify-content: center;
-    /* padding: 10px 0; */
-
-    /* border: 2px solid red; */
 }
 
 .post-form-wrapper {
@@ -62,7 +57,6 @@ body {
     gap: 5px;
     border-radius: 8px;
 
-    /* border: 2px solid red; */
 }
 
 .post-n-clear-btn-con{
@@ -110,18 +104,16 @@ textarea{
 
 .post-displayer{
     width:100%;
-    height: calc(100vh - 64px);
-    padding: 10px;
+    height: calc(100vh - 44px);
     display: grid;
     overflow: auto;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    justify-content: space-between;
     gap: 10px;
-
 }
 
 .post{
-    max-width: 320px;
+    width:100%;
+    max-width: 360px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -283,8 +275,6 @@ span#creator {
         place-items: center;
         background-color: rgb(41, 41, 58);
         overflow: auto;
-
-        grid-template-columns: repeat(auto-fit, minmax(236px, 1fr));
     }
     .post-wrapper::-webkit-scrollbar {
         display: none;
@@ -292,6 +282,6 @@ span#creator {
     
     .post {
         width: 100%;
-        height: calc(100vh - 20px);
+        height: calc(100vh - 44px);
     }
 }

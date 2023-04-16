@@ -12,7 +12,6 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const display = { display: 'block' };
     const memoUser = useSelector(state => state.usersReducer.memoUser);
 
     function handleLogout () {
@@ -30,8 +29,8 @@ const Navbar = () => {
                 {/* <Link className='link' to='/home' > Home </Link> */}
                 <Link className={`link ${memoUser && 'hide'}`} to='/register' > Signup </Link>
                 <Link className='link' to='/post-form' > Post </Link>
-                <Link className='link' to='/view-1' > View-1 </Link>
-                <Link className='link' to='/view-2' > View-2 </Link>
+                <Link className='link' to='/view-1' > Posts </Link>
+                <Link className='link' to='/view-2' > Posts </Link>
                 <button className={`link logout-btn ${memoUser && 'display'}`} onClick={handleLogout} >Logout</button>
                 <div className='navbar-menu-icon' ><MenuIcon /></div>
             </div>

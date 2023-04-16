@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
 
 import { fetchPosts } from './actions/postActions';
 import { fetchUsers } from './actions/usersActions';
@@ -9,8 +8,6 @@ import PostForm from './components/post/PostForm';
 import PostMUI from './components/post/PostMUI';
 import PostDisplayer from './components/post/PostDisplayer';
 import Navbar from './components/navbar/Navbar';
-import { Context } from './context/ContextPovider';
-import Home from './components/home/Home';
 import Register from './components/home/Register';
 import Login from './components/home/Login';
 
@@ -23,12 +20,7 @@ const App = () => {
   }, [dispatch]);
 
   const memoUser = useSelector(state => state.usersReducer.memoUser);
-  // console.log(`currUser:`, currUser)
-
-  //   const users = useSelector(state => state.usersReducer.users);
-  //   console.log('users:', users);
-  //   const posts = useSelector(state => state.postsReducer.posts);
-  //   console.log("posts:", posts);
+  // console.log(`memoUser:`, memoUser)
 
   const ProtectedPage = ({ children }) => {
     if (!memoUser) return <Navigate to='/login' />;
@@ -42,12 +34,22 @@ const App = () => {
         <Routes>
           <Route path='/'>
             <Route index element={<PostDisplayer />} />
-            {/* <Route path='/home' element={<Home />} /> */}
             <Route path='/register' element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path='/post-form' element={<PostForm />} />
-            <Route path='/view-1' element={<PostDisplayer />} />
-            <Route path='/view-2' element={<PostMUI />} />
+            <Route path='/post-form' element={
+              <ProtectedPage>
+                <PostForm />
+              </ProtectedPage>} />
+            <Route path='/view-1' element={
+              <ProtectedPage>
+                <PostDisplayer />
+              </ProtectedPage>
+            } />
+            <Route path='/view-2' element={
+              <ProtectedPage>
+                <PostMUI />
+              </ProtectedPage>
+            } />
           </Route>
         </Routes>
       </BrowserRouter>

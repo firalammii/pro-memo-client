@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { createUser } from '../../actions/usersActions';
+import './regLog.css'
 
 const Register = () => {
 

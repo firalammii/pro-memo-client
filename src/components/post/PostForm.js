@@ -42,10 +42,10 @@ const PostForm = () => {
             } else setError('confirm the action');
         } else {
             const postData = {
-                users: memoUser._id, title, body, postPic, publicPost,
+                creator: memoUser, title, body, postPic, publicPost,
                 tags: tags.toString().split(',').map(tag => tag.trim()),
             };
-            dispatch(createPost(memoUser._id, postData));
+            dispatch(createPost(postData));
             finished();
         }
     }

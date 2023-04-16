@@ -7,7 +7,6 @@ const postUrl = `${BASEURL}/posts`;
 export const fetchUsers = () => axios.get(`${userUrl}/users`);
 export const createUser = (user) => axios.post(`${userUrl}/create`, user);
 export const updateUser = (id, nuser) => axios.put(`${userUrl}/update/${id}`, nuser);
-export const addUserPost = (userId, nuser) => axios.put(`${userUrl}/add-user-post/${userId}`, nuser);
 export const deleteUser = (id) => axios.delete(`${userUrl}/delete/${id}`);
 
 export const fetchPosts = () => axios.get(`${postUrl}/posts`);

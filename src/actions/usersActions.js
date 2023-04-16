@@ -14,7 +14,6 @@ export const fetchUsers = () => async (dispatch) => {
 };
 
 export const createUser = (userData) => async (dispatch) => {
-    console.log('userData', userData);
     try {
         const { data } = await api.createUser(userData);
         dispatch({ type: CREATE_USER, payload: data });

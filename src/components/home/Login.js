@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { usersActionTypes } from "../../actions/actionTypes";
 
+import './regLog.css'
+
 const Login = () => {
 
     const [error, setError] = useState(false);

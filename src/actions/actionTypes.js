@@ -14,5 +14,4 @@ export const usersActionTypes = {
     DELETE_USER: 'DELETE_USER',
     SELECT_USER: 'SELECT_USER',
     LOGOUT: 'LOGOUT',
-    ADD_USER_POST: 'ADD_USER_POST',
 };

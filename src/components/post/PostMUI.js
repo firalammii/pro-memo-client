@@ -21,7 +21,7 @@ const PostMUI = () => {
                                 <Grid item key={post._id} lg={2} sm={4} xs={9} md={3} className='post-item'>
                                     <Card className='card'>
 
-                                        <CardMedia image={post.pic} className='image' />
+                                        <CardMedia image={post.postPic} className='image' />
                                         <Typography variant='h6' >{post.title}</Typography>
                                         <CardContent className='card-content'>
                                             <Typography variant='body1' gutterBottom>{post.body}</Typography>

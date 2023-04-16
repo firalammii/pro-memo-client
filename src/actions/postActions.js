@@ -1,5 +1,5 @@
 
-import { postsActionTypes, usersActionTypes } from './actionTypes';
+import { postsActionTypes } from './actionTypes';
 import * as api from '../api/api';
 
 const { FETCH_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } = postsActionTypes;
@@ -13,17 +13,10 @@ export const fetchPosts = () => async (dispatch) => {
     }
 };
 
-export const createPost = (userId, postData) => async (dispatch) => {
+export const createPost = (postData) => async (dispatch) => {
     try {
         const { data } = await api.createPost(postData);
-        console.log('created post:', data);
         dispatch({ type: CREATE_POST, payload: data });
-
-        const res = await api.addUserPost(userId, data);
-        console.log('added user post user:', res);
-        // dispatch({ type: usersActionTypes.ADD_USER_POST, payload: data });
-
-
     } catch (error) {
         console.log(error);
     }

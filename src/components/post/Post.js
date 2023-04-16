@@ -6,7 +6,7 @@ import FavoriteBorderTwoToneIcon from '@mui/icons-material/FavoriteBorderTwoTone
 import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { deletePost, likePost } from '../../actions/postActions';
@@ -22,7 +22,7 @@ const Post = ({ post }) => {
     const navigate = useNavigate();
 
     const { editPost } = useContext(Context);
-    const { title, users, body, postPic, date, tags, likes, privecy } = post;
+    const { title, creator, body, postPic, date, tags, likes, } = post;
 
     function editNnevigate () {
         dispatch({ type: postsActionTypes.SELECT_POST, payload: post });
@@ -30,14 +30,11 @@ const Post = ({ post }) => {
         navigate('/post-form');
     }
 
-    // const memoUser = useSelector(state => state.usersReducer.memoUser);
-    // console.log('memoUser', memoUser)
-
     return (
         <div className='post'>
             <div className='menu-n-creator'>
                 <div className='creator-n-date'>
-                    <p className='creator'>By {users.username}</p>
+                    <p className='creator'>By {creator?.username}</p>
                     <p className='date'>{moment(date).fromNow()} </p>
                 </div>
                 <div className="dropdown">
