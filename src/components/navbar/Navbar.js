@@ -29,11 +29,9 @@ const Navbar = () => {
                 <Link className='link' to='/public-posts' onClick={showPublicPosts}> Posts </Link>
                 <Link className='link' to='/personal-posts' onClick={showPrivatePosts}> Mines </Link>
                 <button className={`link logout-btn ${memoUser && 'display'}`} onClick={handleLogout} >Logout</button>
-                {/* <div className='navbar-menu-icon' > */}
                 <div className='username-n-pp'>
-                    <img className='pp' src={memoUser?.pp} alt='' style={{ height: '40px', borderRadius: '2px' }} />
+                    <img className='pp' src={memoUser?.pp} alt='' style={{ height: '30px', borderRadius: '50%' }} />
                 </div>
-                {/* </div> */}
             </div>
 
         </nav>
