@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 
 import { usersActionTypes } from '../../actions/actionTypes';
 import { Context } from '../../context/ContextPovider';
@@ -29,7 +29,11 @@ const Navbar = () => {
                 <Link className='link' to='/public-posts' onClick={showPublicPosts}> Posts </Link>
                 <Link className='link' to='/personal-posts' onClick={showPrivatePosts}> Mines </Link>
                 <button className={`link logout-btn ${memoUser && 'display'}`} onClick={handleLogout} >Logout</button>
-                <div className='navbar-menu-icon' ><MenuIcon /></div>
+                {/* <div className='navbar-menu-icon' > */}
+                <div className='username-n-pp'>
+                    <img className='pp' src={memoUser?.pp} alt='' style={{ height: '40px', borderRadius: '2px' }} />
+                </div>
+                {/* </div> */}
             </div>
 
         </nav>
