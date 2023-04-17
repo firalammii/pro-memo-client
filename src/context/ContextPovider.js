@@ -5,7 +5,7 @@ export const Context = createContext();
 const ContextPovider = ({ children }) => {
 
     const [selected, setSelected] = useState(null);
-    const [publicPosts, setPublicPosts] = useState(true);
+    const [showPublic, setPublicPosts] = useState(true);
 
     function editPost (post) {
         if (post === 'clear') setSelected(null);
@@ -20,7 +20,7 @@ const ContextPovider = ({ children }) => {
 
     return (
         <Context.Provider value={{
-            selected, editPost, publicPosts,
+            selected, editPost, showPublic,
             showPublicPosts, showPrivatePosts,
         }}>
             {children}

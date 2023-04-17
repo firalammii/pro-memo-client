@@ -9,11 +9,13 @@ import { Context } from '../../context/ContextPovider';
 
 const PostDisplayer = () => {
 
-    const { publicPosts } = useContext(Context)
+    const { showPublic } = useContext(Context)
     const posts = useSelector((state) => state.postsReducer.posts);
     const memoUser = useSelector((state) => state.usersReducer.memoUser);
+
+    const publicPosts = posts?.filter(post => post.publicPost)
     const userPosts = posts?.filter(post => post.creator._id === memoUser?._id);
-    const posts2run = publicPosts ? posts : userPosts;
+    const posts2run = showPublic ? publicPosts : userPosts;
 
     return (
         <div className='post-displayer'>
